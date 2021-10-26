@@ -1,0 +1,21 @@
+def hw1(sl, t):
+  sm, st, ed, c = 0, 0, 0, 0
+  l = sl.split(",")
+  le = len(l)
+  sm = int(l[st])
+  while ed != le-1 and st != le-1:
+    if sm != t:
+      if sm > t:
+        sm -= int(l[st])
+      else:
+        ed += int(l[ed])
+    else:
+      if ed == le-1:
+        c, sm, st = c+1, sm-int(l[st]), st+1
+      else:
+        if sm+int(l[ed+1])>9:
+          c, sm, st = c+1, sm-int(l[st]), st+1
+        else:
+          c, ed, sm = c+1, ed+1, sm+int(l[ed])
+  print(c)
+  return c
